@@ -1,15 +1,9 @@
 function bankRequests(accounts, requests) {
     let requestsConv = requests.map(a => a.split(' '))
-     
-    console.log(requestsConv)
-    
-    const temDinheiro = val => {
-        if(val < 0) {
-            return [-2]
-        }
-    }
+
     /* recebe um Array como argumento arr[0] = operacao , arr[1] = index da primeira conta 
     arr[2] = index da segunda conta arr[3] = valor a ser manipulado*/
+    let trueErro = []
     let erro
     let arrayErro = []
    const requestOp = (req,index) => {
@@ -37,7 +31,7 @@ function bankRequests(accounts, requests) {
                         arrayErro.push(-erro)
                         return 
                     }
-                    //temDinheiro(accounts[index1])  
+                      
                     controle = accounts[index2]
                     if(controle === undefined){
                         erro = index+1
@@ -66,12 +60,11 @@ function bankRequests(accounts, requests) {
                    arrayErro.push(-erro)
                    return 
                }
-               //temDinheiro(accounts[index1])
+               
             }
          }
         }
    requestsConv.forEach((a,i) => requestOp(a,i))
-   let trueErro = []
    console.log(accounts)
         if(arrayErro.length === 0){
            return accounts
