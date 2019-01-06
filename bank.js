@@ -1,11 +1,11 @@
 function bankRequests(accounts, requests) {
-    let requestsConv = requests.map(a => a.split(' '))
+    const requestsConv = requests.map(a => a.split(' '))
 
     /* recebe um Array como argumento arr[0] = operacao , arr[1] = index da primeira conta 
     arr[2] = index da segunda conta arr[3] = valor a ser manipulado*/
-    let trueErro = []
+    const trueErro = []
     let erro
-    let arrayErro = []
+    const arrayErro = []
    const requestOp = (req,index) => {
        let index1 = Number(req[1]) - 1
        
