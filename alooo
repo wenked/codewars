@@ -1,0 +1,53 @@
+import React from 'react';
+import { addAnime, discardList} from '../actions';
+import { connect } from 'react-redux';
+
+class Anime extends React.Component {
+
+    render (){
+
+        return (
+                <div className="item">
+            
+                                <div className="image">
+                                    <img 
+                                        className="ui tiny image"
+                                        alt="animes"
+                                        key={this.props.anime.mal_id} 
+                                        src={this.props.anime.image_url}  
+                                        onClick={() => console.log(this.props)}    
+                                        />
+                                </div>
+                                    <div className="middle aligned content">
+                                        <div className="header">
+                                            {this.props.anime.title}
+                                        </div>
+                                    </div>
+                                            <div className="container">
+                                                <div className="extra">
+                                                <button 
+                                                    className="ui right floated secondary button"
+                                                    onClick={() => this.props.addAnime(this.props.anime)}
+                                                >
+                                                    Add
+                                                    </button>
+                                                <button 
+                                                    className="ui right floated button"
+                                                    onClick={() => {this.props.discardList(this.props.anime)}}
+                                                >
+                                                    Discard
+                                                </button>
+                                        </div>
+                                    </div>
+                            
+                </div>
+            )
+        }
+}
+
+const mapStateToProps = (state) => {
+    console.log(state)
+      return {topFive: state.topFiveReducer}
+}
+
+export default connect(mapStateToProps,{addAnime, discardList})(Anime);
